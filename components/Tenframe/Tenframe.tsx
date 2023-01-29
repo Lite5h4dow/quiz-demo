@@ -1,13 +1,11 @@
-import { useEffect } from "react"
 import {StyleSheet, View, Text, TouchableHighlight} from "react-native"
 import { useTenFrame } from "../../hooks/useTenFrame"
 
 // create a tenframe module
-export const Tenframe = (
-  {
-    cellCount=10,
-    interactable=false,
-    active=0,
+export const Tenframe = ({
+    cellCount=10, 
+    interactable=false, 
+    active=0, 
     onSelect
   }:{
     cellCount?:5|10|15|20, 
@@ -15,13 +13,8 @@ export const Tenframe = (
     active?:number, 
     onSelect?:(number:number)=>void}
 ) => {
-  const {cells, updateCells, selected} = 
-    useTenFrame(cellCount, active)
-
-  //share state change with parent
-  useEffect(()=>{
-    if(!!onSelect) onSelect(selected)
-  },[selected])
+  const {cells, updateCells} = 
+    useTenFrame(cellCount, active, onSelect)
 
   return(
   <View style={style.container}>
@@ -80,7 +73,7 @@ const style = StyleSheet.create({
     display:"flex",
     textAlign:"center",
     color:"#000000",
-    opacity:0.5 
+    opacity:0.25 
   },
   activeCell:{
     borderColor:"#0FFA",
@@ -90,6 +83,7 @@ const style = StyleSheet.create({
     borderRadius: 10,
     backgroundColor:"#AAA",
     display:"flex",
+    margin:10,
   },
   clear:{
     borderRadius:10,
