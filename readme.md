@@ -4,7 +4,8 @@ this is a test application for an example math quiz with a tentable component
 
 ## Time spent
 ~ 6 HRs dev time
-~ 2 day Setup (react native is a pain)
+
+~ 2 day Setup (Android SDK/ADB is a pain)
 
 ## Build instructions:
 - clone this repo to local filesystem
