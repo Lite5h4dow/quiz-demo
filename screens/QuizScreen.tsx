@@ -81,6 +81,7 @@ export default QuizScreen
 
 const styles = StyleSheet.create({ 
   body:{
+    paddingTop:30,
     backgroundColor:"#000"
   },
   header:{
