@@ -14,6 +14,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
+import QuizScreen from '../screens/QuizScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
@@ -91,6 +92,14 @@ function BottomTabNavigator() {
           title: 'Tab Two',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
+      />
+      <BottomTab.Screen 
+	name="QuizTab"
+	component={QuizScreen}
+	options={{
+	  title: "Quiz Screen",
+	  tabBarIcon:({color}) => <TabBarIcon name="code" color={color} />,
+	}}
       />
     </BottomTab.Navigator>
   );

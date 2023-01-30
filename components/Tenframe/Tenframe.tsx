@@ -5,16 +5,16 @@ import { useTenFrame } from "../../hooks/useTenFrame"
 export const Tenframe = ({
     cellCount=10, 
     interactable=false, 
-    active=0, 
+    value=0, 
     onSelect
   }:{
     cellCount?:5|10|15|20, 
     interactable?: boolean,
-    active?:number, 
+    value?:number, 
     onSelect?:(number:number)=>void}
 ) => {
   const {cells, updateCells} = 
-    useTenFrame(cellCount, active, onSelect)
+    useTenFrame(cellCount, value, onSelect)
 
   return(
   <View style={style.container}>

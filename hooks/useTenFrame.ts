@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react"
 export const useTenFrame = (
   cellCount:5|10|15|20,
-  active:number=0, 
+  value:number=0, 
   onSelect?:(number:number)=>void
 ) => {
   const [cells, setCells] = useState<{active:boolean, number:number}[]>(
     Array.from(
       {length: cellCount}, 
-      (_,index)=>({active:++index<=active, number: index})
+      (_,index)=>({active:++index<=value, number: index})
     ));
 
-  const [selected, setSelected] = useState(active)
+  const [selected, setSelected] = useState<number>(value)
+  //update cells on value change
+  useEffect(()=>{
+    updateCells(value)
+  },[value])
 
   //update states on call
-
   const updateCells = (number:number) => {
     setSelected(number)
     setCells((state)=>(state.map((i)=>
