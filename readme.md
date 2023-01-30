@@ -9,7 +9,7 @@ this is a test application for an example math quiz with a tentable component
 ## Build instructions:
 - clone this repo to local filesystem
 - cd into directory
-- run `yarn install -G eas-cli`
+- run `yarn global add eas-cli`
 - run `eas build --platform {android, ios, all}`
 
 ## Requirements
