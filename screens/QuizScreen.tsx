@@ -2,9 +2,10 @@ import { useEffect } from "react"
 import { Text, View, StyleSheet, TouchableHighlight, ScrollView } from "react-native"
 import { Tenframe } from "../components/Tenframe/Tenframe"
 import { useQuiz } from "../hooks/useQuiz"
-import { RootTabScreenProps } from "../types"
+import {NativeStackScreenProps} from "@react-navigation/native-stack"
+import { RootStackScreenProps } from "../types"
 
-const QuizScreen = ({navigation}:RootTabScreenProps<'TabThree'>) => {
+const QuizScreen = ({navigation}:RootStackScreenProps<'QuizScreen'>) => {
   const {
     questions, 
     answers, 
@@ -14,14 +15,15 @@ const QuizScreen = ({navigation}:RootTabScreenProps<'TabThree'>) => {
     submit,
     retry
   } = useQuiz([
-    {question: "5 + 4", answer: 9},
-    {question: "6 - 3", answer: 3},
-    {question: "8 - 2", answer: 6},
-    {question: "10 + 5", answer: 15}
+    {question: "5 + 4 = ?", answer: 9},
+    {question: "6 - 3 = ?", answer: 3},
+    {question: "8 - 2 = ?", answer: 6},
+    {question: "10 + 5 = ?", answer: 15},
+    {question: "20 - 10 = ?", answer: 10}
   ])
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.body}>
       {questions.map((q,index)=>{
 	return (
 	  <View key={index}>
@@ -64,6 +66,12 @@ const QuizScreen = ({navigation}:RootTabScreenProps<'TabThree'>) => {
 	)
       }
       
+    <TouchableHighlight
+      style={styles.submit}
+      onPress={(e)=>{navigation.pop()}}
+    >
+      <Text style={styles.submitText}>Back</Text>
+    </TouchableHighlight>
     </ScrollView>
   )
 }
@@ -72,6 +80,9 @@ export default QuizScreen
 
 
 const styles = StyleSheet.create({ 
+  body:{
+    backgroundColor:"#000"
+  },
   header:{
     color:"#FFF",
     fontWeight:"bold",
